@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
+import { UsersProvaider } from './context/UserContext'
 import UserForm from './views/UserForm'
 import UserList from './views/UserList'
 
@@ -9,7 +10,8 @@ const Stack = createNativeStackNavigator()
 
 export default (_props: any) => {
     return (
-        <Stack.Navigator initialRouteName='UserList' screenOptions={screenOptions}>
+        <UsersProvaider>
+            <Stack.Navigator initialRouteName='UserList' screenOptions={screenOptions}>
             <Stack.Screen
                 name='UserList'
                 component={UserList}
@@ -33,6 +35,8 @@ export default (_props: any) => {
                 }}
             />
         </Stack.Navigator>
+        </UsersProvaider>
+        
     )
 }
 
