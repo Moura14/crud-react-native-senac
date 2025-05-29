@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'
+import UsersContext from '../context/UserContext'
 
 
 export default ({route, navigation}) => {
     
   const [user, setUser] = useState(route.params ? route.params : {})
+ const {dispatch} = useContext(UsersContext)
     return (
        <View style={style.form}>
             <Text>Name</Text>
@@ -16,11 +18,16 @@ export default ({route, navigation}) => {
             </View>
             <View>
                 <Text>URL do Avatar</Text>
-                <TextInput style={style.input} onChangeText={url => setUser({...user, email})} placeholder='Informe a URl do Avatar' value={user.avatar}>
+                <TextInput style={style.input} onChangeText={url => setUser({...user, url})} placeholder='Informe a URl do Avatar' value={user.avatar}>
                 </TextInput>
             </View>
             <Button title="Salvar" onPress={() =>  {
-                navigation.goBack()
+                console.warn(user)
+               dispatch({
+                type: user.id ? 'updateUser' : 'createUser',
+                payload: user,
+               })
+               navigation.goBack()
             }}>
 
             </Button>
