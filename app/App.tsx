@@ -16,7 +16,7 @@ export default (_props: any) => {
                 name='UserList'
                 component={UserList}
                 options={({ navigation }) => ({
-                    title: 'Usuário',
+                    title: 'Clientes',
                     headerRight: () => (
                         <TouchableOpacity
                             style={{ marginRight: 10 }}
@@ -31,7 +31,7 @@ export default (_props: any) => {
                 name='UserForm'
                 component={UserForm}
                 options={{
-                    title: 'Formulário de Usuários',
+                    title: 'Formulário de clientes',
                 }}
             />
         </Stack.Navigator>
