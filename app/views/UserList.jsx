@@ -54,8 +54,7 @@ export default props => {
 
     return (
         <View>
-            <FlatList data={state.users} keyExtractor={user => user.id.toString()} renderItem={getUserItem}>
-
+            <FlatList data={state.users}  keyExtractor={user => user.id.toString()} renderItem={getUserItem}>
             </FlatList>
         </View>
     )

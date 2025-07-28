@@ -16,7 +16,7 @@ export default (_props: any) => {
                 name='UserList'
                 component={UserList}
                 options={({ navigation }) => ({
-                    title: 'Lista de Usuários',
+                    title: 'Usuário',
                     headerRight: () => (
                         <TouchableOpacity
                             style={{ marginRight: 10 }}
