@@ -5,7 +5,8 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { UsersProvaider } from './context/UserContext';
 
-import ProdutctForm from './views/ProductForm';
+import ProductForm from './views/ProductForm';
+import ProductList from './views/ProductsList';
 import UserForm from './views/UserForm';
 import UserLists from './views/UserList';
 
@@ -28,10 +29,18 @@ function UserProduct({navigation, route}) {
   );
 }
 
-function ProductList() {
+function ProductForms({navigation, route}){
+  return (
+    <View style={{flex: 1}}>
+      <ProductForm navigation={navigation} route={route}></ProductForm>
+    </View>
+  )
+}
+
+function ProductLists() {
   return (
     <View style={{ flex: 1 }}>
-      <ProdutctForm />
+     <ProductList/>
     </View>
   );
 }
@@ -65,13 +74,22 @@ function Tabs({ navigation }) {
       />
       <Tab.Screen
         name="Produtos"
-        component={ProductList}
+        component={ProductLists}
         options={{
           title: 'Produtos',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="cube" size={size} color={color} />
           ),
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 10 }}
+              onPress={() => navigation.navigate('ProductForms')}
+            >
+              <Ionicons name="add" size={25} color="white" />
+            </TouchableOpacity>
+          ),
         }}
+        
       />
     </Tab.Navigator>
   );
@@ -96,6 +114,17 @@ export default function App() {
               headerTitleStyle: { fontWeight: 'bold' },
             }}
           />
+          <Stack.Screen
+           name="ProductForms"
+            component={ProductForms}
+            options={{
+            title: 'Cadastro de Produto',
+            headerStyle: { backgroundColor: '#f4511e' },
+            headerTintColor: '#fff',
+            headerTitleStyle: { fontWeight: 'bold' },
+  }}
+/>
+
         </Stack.Navigator>
     </UsersProvaider>
   );
