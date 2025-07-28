@@ -12,32 +12,31 @@ import UserLists from './views/UserList';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function UserList({ navigation }) {
+function UserList({ navigation, route }) {
   return (
     <View style={{ flex: 1 }}>
-      <UserLists />
+      <UserLists navigation={navigation} route={route} />
     </View>
   );
 }
 
-function UserProduct() {
+function UserProduct({navigation, route}) {
   return (
     <View style={{ flex: 1 }}>
-      <UserForm />
+      <UserForm navigation={navigation} route={route}/>
     </View>
   );
 }
-
 
 function ProductList() {
   return (
-    <View>
-     <ProdutctForm></ProdutctForm>
+    <View style={{ flex: 1 }}>
+      <ProdutctForm />
     </View>
   );
 }
 
-function Tabs() {
+function Tabs({ navigation }) {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -49,7 +48,7 @@ function Tabs() {
       <Tab.Screen
         name="UserList"
         component={UserList}
-        options={({ navigation }) => ({
+        options={{
           title: 'Clientes',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="people" size={size} color={color} />
@@ -62,7 +61,7 @@ function Tabs() {
               <Ionicons name="add" size={25} color="white" />
             </TouchableOpacity>
           ),
-        })}
+        }}
       />
       <Tab.Screen
         name="Produtos"
