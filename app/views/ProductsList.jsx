@@ -1,14 +1,16 @@
+import React, { useContext } from 'react'
 import { Alert, FlatList, View } from 'react-native'
 import { Button, Icon, ListItem } from 'react-native-elements'
+import ProductContext from '../context/ProductContext'
 
 
 
 export default props => {
 
 
+    const {state, dispatch} = useContext(ProductContext)
 
-
-    function confirmUserDeletion(user){
+    function confirmProductDeletion(produto){
         Alert.alert('Excluir produto', 'Deseja excluir o produto?', [
             {
                 text: 'Sim',
@@ -22,13 +24,15 @@ export default props => {
         ])
     }
 
-    function getUserItem({}){
+    function getProductItem({item: produto}){
         return (
-            <ListItem bottomDivider  onPress={() => props.navigation.navigate('UserForm')}>
+            <ListItem bottomDivider  onPress={() => props.navigation.navigate('ProductForm')}>
 
                 <ListItem.Content>
-                    <ListItem.Title>Produto</ListItem.Title>
-                    <ListItem.Title>Preço</ListItem.Title>
+                    <ListItem.Title>{produto.name}</ListItem.Title>
+                    <ListItem.Title>{produto.preco}</ListItem.Title>
+                    <ListItem.Title>{produto.desc}</ListItem.Title>
+                    <ListItem.Title>{produto.categoria}</ListItem.Title>
                 </ListItem.Content>
             <Button
             onPress={() => {
@@ -37,7 +41,7 @@ export default props => {
             icon={<Icon name="edit" size={25} color="orange" />}
         />
          <Button 
-            onPress={() => {confirmUserDeletion(user)}}
+            onPress={() => {confirmProductDeletion(produto)}}
             type="clear"
             icon={<Icon name="delete" size={25} color="red"/>}
         />
@@ -48,7 +52,7 @@ export default props => {
 
     return (
         <View>
-            <FlatList >
+            <FlatList data={state.products}  keyExtractor={produtos => produtos.id.toString()} renderItem={getProductItem} >
             </FlatList>
         </View>
     )

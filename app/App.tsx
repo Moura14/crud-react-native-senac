@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
+import { ProductProvider } from './context/ProductContext';
 import { UsersProvaider } from './context/UserContext';
 
 import ProductForm from './views/ProductForm';
@@ -98,7 +99,9 @@ function Tabs({ navigation }) {
 export default function App() {
   return (
     <UsersProvaider>
-        <Stack.Navigator>
+      <ProductProvider>
+           <Stack.Navigator>
+        
           <Stack.Screen
             name="Tabs"
             component={Tabs}
@@ -126,6 +129,7 @@ export default function App() {
 />
 
         </Stack.Navigator>
+      </ProductProvider>
     </UsersProvaider>
   );
 }
