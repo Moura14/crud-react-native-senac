@@ -6,6 +6,7 @@ import { TouchableOpacity, View } from 'react-native';
 import { ProductProvider } from './context/ProductContext';
 import { UsersProvaider } from './context/UserContext';
 
+import { LogBox } from 'react-native';
 import ProductForm from './views/ProductForm';
 import ProductList from './views/ProductsList';
 import UserForm from './views/UserForm';
@@ -13,6 +14,11 @@ import UserLists from './views/UserList';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
+
+LogBox.ignoreLogs([
+  'Each child in a list should have a unique "key" prop',
+]);
+
 
 function UserList({ navigation, route }) {
   return (

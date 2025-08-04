@@ -32,8 +32,8 @@ export default props => {
             <ListItem bottomDivider  onPress={() => props.navigation.navigate('UserForms', user)}>
                 <Avatar source={{uri: user.avatar}}></Avatar>
                 <ListItem.Content>
-                    <ListItem.Title>{user.name}</ListItem.Title>
-                    <ListItem.Title>{user.email}</ListItem.Title>
+                    <ListItem.Title key='name'>{user.name}</ListItem.Title>
+                    <ListItem.Title key='email'>{user.email}</ListItem.Title>
                 </ListItem.Content>
             <Button
             onPress={() => {
