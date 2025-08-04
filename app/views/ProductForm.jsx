@@ -12,10 +12,10 @@ export default ({route, navigation}) => {
     return (
         <View style={style.form}>
             <Text>Nome do produto</Text>
-            <TextInput style={style.input} onChangeText={ nome => (setProduto({...produto, nome}))} value={produto.nome}   placeholder='Informe o produto'  ></TextInput>
+            <TextInput style={style.input} onChangeText={ name => (setProduto({...produto, name}))} value={produto.name}   placeholder='Informe o produto'  ></TextInput>
             <View>
                 <Text>Descrição</Text>
-                <TextInput style={style.input} onChangeText={ descricao => (setProduto({...produto, descricao }))} value={produto.descricao}  placeholder='Informe a descrição'  ></TextInput>
+                <TextInput style={style.input} onChangeText={ desc => (setProduto({...produto, desc }))} value={produto.desc}  placeholder='Informe a descrição'  ></TextInput>
             </View>
             <View>
                 <Text>Categoria</Text>
@@ -24,7 +24,7 @@ export default ({route, navigation}) => {
             </View>
             <View>
                 <Text>Preço</Text>
-                <TextInput keyboardType='decimal-pad' style={style.input} onChangeText={ preco => (setProduto({...produto, preco }))} value={produto.preco} placeholder="Informe o preço" />
+                <TextInput keyboardType='decimal-pad' style={style.input} onChangeText={ preco => (setProduto({...produto, preco }))} value={produto.preco} placeholder="R$" />
             </View>
             <Button title="Salvar" onPress={() =>  {
                     dispatch({

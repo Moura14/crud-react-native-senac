@@ -29,16 +29,17 @@ export default props => {
 
     function getProductItem({item: produto}){
         return (
-            <ListItem bottomDivider  onPress={() => props.navigation.navigate('ProductForm')}>
+            <ListItem bottomDivider  onPress={() => props.navigation.navigate('ProductForms')}>
 
                 <ListItem.Content>
                     <ListItem.Title>{produto.name}</ListItem.Title>
-                    <ListItem.Title>{produto.preco}</ListItem.Title>
                     <ListItem.Title>{produto.desc}</ListItem.Title>
                     <ListItem.Title>{produto.categoria}</ListItem.Title>
+                    <ListItem.Title>{produto.preco}</ListItem.Title>
                 </ListItem.Content>
             <Button
             onPress={() => {
+                props.navigation.navigate( 'ProductForms', produto);
           }}
             type="clear"
             icon={<Icon name="edit" size={25} color="orange" />}

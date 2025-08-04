@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from 'react'
 import products from '../data/product'
 
-const initialState = { products } // plural!
+const initialState = { products }
 const ProductContext = createContext({})
 
 const actions = {
@@ -9,7 +9,7 @@ const actions = {
     const product = { ...action.payload, id: Math.random() }
     return {
       ...state,
-      products: [...state.products, product], // corrigido
+      products: [...state.products, product],
     }
   },
 
@@ -19,7 +19,7 @@ const actions = {
       ...state,
       products: state.products.map(p =>
         p.id === updated.id ? updated : p
-      ), // corrigido
+      ), 
     }
   },
 
@@ -27,7 +27,7 @@ const actions = {
     const product = action.payload
     return {
       ...state,
-      products: state.products.filter(p => p.id !== product.id), // corrigido
+      products: state.products.filter(p => p.id !== product.id), 
     }
   },
 }

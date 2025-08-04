@@ -22,7 +22,7 @@ function UserList({ navigation, route }) {
   );
 }
 
-function UserProduct({navigation, route}) {
+function UserForms({navigation, route}) {
   return (
     <View style={{ flex: 1 }}>
       <UserForm navigation={navigation} route={route}/>
@@ -38,10 +38,10 @@ function ProductForms({navigation, route}){
   )
 }
 
-function ProductLists() {
+function ProductLists({navigation, route}) {
   return (
     <View style={{ flex: 1 }}>
-     <ProductList/>
+     <ProductList navigation={navigation}></ProductList>
     </View>
   );
 }
@@ -66,7 +66,7 @@ function Tabs({ navigation }) {
           headerRight: () => (
             <TouchableOpacity
               style={{ marginRight: 10 }}
-              onPress={() => navigation.navigate('UserProduct')}
+              onPress={() => navigation.navigate('UserForms')}
             >
               <Ionicons name="add" size={25} color="white" />
             </TouchableOpacity>
@@ -108,8 +108,8 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="UserProduct"
-            component={UserProduct}
+            name="UserForms"
+            component={UserForms}
             options={{
               title: 'Cadastro de Cliente',
               headerStyle: { backgroundColor: '#f4511e' },

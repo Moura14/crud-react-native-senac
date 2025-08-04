@@ -29,7 +29,7 @@ export default props => {
 
     function getUserItem({item: user}){
         return (
-            <ListItem bottomDivider  onPress={() => props.navigation.navigate('UserForm')}>
+            <ListItem bottomDivider  onPress={() => props.navigation.navigate('UserForms', user)}>
                 <Avatar source={{uri: user.avatar}}></Avatar>
                 <ListItem.Content>
                     <ListItem.Title>{user.name}</ListItem.Title>
@@ -37,7 +37,7 @@ export default props => {
                 </ListItem.Content>
             <Button
             onPress={() => {
-            props.navigation.navigate('UserForm', user);
+            props.navigation.navigate('UserForms', user);
           }}
             type="clear"
             icon={<Icon name="edit" size={25} color="orange" />}
