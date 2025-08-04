@@ -24,7 +24,7 @@ export default ({route, navigation}) => {
             <Button title="Salvar" onPress={() =>  {
                 console.warn(user)
                dispatch({
-                type: user.id ? 'updateProduct' : 'createProduct',
+                type: user.id ? 'updateUser' : 'createUser',
                 payload: user,
                })
                navigation.goBack()
