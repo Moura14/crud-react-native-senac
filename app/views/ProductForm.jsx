@@ -24,13 +24,14 @@ export default ({route, navigation}) => {
             </View>
             <View>
                 <Text>Preço</Text>
-                <TextInput style={style.input} onChangeText={ preco => (setProduto({...produto, preco }))} value={produto.preco} placeholder="Informe o preço" />
+                <TextInput keyboardType='decimal-pad' style={style.input} onChangeText={ preco => (setProduto({...produto, preco }))} value={produto.preco} placeholder="Informe o preço" />
             </View>
             <Button title="Salvar" onPress={() =>  {
                     dispatch({
                 type: produto.id ? 'updateProduct' : 'createProduct',
                 payload: produto,
                })
+               navigation.goBack() 
                         }}>
             
                         </Button>

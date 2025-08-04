@@ -14,7 +14,7 @@ export default ({route, navigation}) => {
             <TextInput style={style.input} onChangeText={name => setUser({...user, name})} placeholder='Informe o Nome' value={user.name}></TextInput>
             <View>
                 <Text>Email</Text>
-                <TextInput style={style.input} onChangeText={email => setUser({...user, email})} placeholder='Informe seu Email' value={user.email}></TextInput>
+                <TextInput keyboardType='email-address' style={style.input} onChangeText={email => setUser({...user, email})} placeholder='Informe seu Email' value={user.email}></TextInput>
             </View>
             <View>
                 <Text>URL do Avatar</Text>
@@ -28,7 +28,7 @@ export default ({route, navigation}) => {
                 payload: user,
                })
                navigation.goBack()
-            }}>
+            }}> 
 
             </Button>
        </View>
