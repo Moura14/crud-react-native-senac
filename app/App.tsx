@@ -7,6 +7,7 @@ import { ProductProvider } from './context/ProductContext';
 import { UsersProvaider } from './context/UserContext';
 
 import { LogBox } from 'react-native';
+import Login from './views/Login';
 import ProductForm from './views/ProductForm';
 import ProductList from './views/ProductsList';
 import UserForm from './views/UserForm';
@@ -18,6 +19,14 @@ const Stack = createNativeStackNavigator();
 LogBox.ignoreLogs([
   'Each child in a list should have a unique "key" prop',
 ]);
+
+function LoginScreen({navigation, route}){
+  return (
+    <View style={{flex: 1}}>
+      <Login></Login>
+    </View>
+  )
+}
 
 
 function UserList({ navigation, route }) {
@@ -107,6 +116,10 @@ export default function App() {
     <UsersProvaider>
       <ProductProvider>
            <Stack.Navigator>
+            <Stack.Screen name='Login' 
+            component={LoginScreen}
+            options={{headerShown: false}}
+            />
         
           <Stack.Screen
             name="Tabs"

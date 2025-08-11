@@ -35,7 +35,7 @@ export default props => {
                     <ListItem.Title key='name'>{produto.name}</ListItem.Title>
                     <ListItem.Title key='desc'>{produto.desc}</ListItem.Title>
                     <ListItem.Title key='categoria'>{produto.categoria}</ListItem.Title>
-                    <ListItem.Title key='preco'>{produto.preco}</ListItem.Title>
+                    <ListItem.Title key=''>{produto.preco}</ListItem.Title>
                 </ListItem.Content>
             <Button
             onPress={() => {
@@ -56,8 +56,7 @@ export default props => {
 
     return (
         <View>
-            <FlatList data={state.products} keyExtractor={prod => prod.id?.toString() ?? Math.random().toString()}
- renderItem={getProductItem} >
+            <FlatList data={state.products}  keyExtractor={produtos => produtos.id.toString()} renderItem={getProductItem} >
             </FlatList>
         </View>
     )
