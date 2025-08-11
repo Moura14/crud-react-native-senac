@@ -10,6 +10,7 @@ import { LogBox } from 'react-native';
 import Login from './views/Login';
 import ProductForm from './views/ProductForm';
 import ProductList from './views/ProductsList';
+import Register from './views/Register';
 import UserForm from './views/UserForm';
 import UserLists from './views/UserList';
 
@@ -23,7 +24,16 @@ LogBox.ignoreLogs([
 function LoginScreen({navigation, route}){
   return (
     <View style={{flex: 1}}>
-      <Login></Login>
+      <Login navigation={navigation}></Login>
+    </View>
+  )
+}
+
+
+function RegisterScreen({navigation, route}){
+  return (
+    <View style={{flex: 1}}>
+      <Register navigation={navigation}></Register>
     </View>
   )
 }
@@ -118,6 +128,11 @@ export default function App() {
            <Stack.Navigator>
             <Stack.Screen name='Login' 
             component={LoginScreen}
+            options={{headerShown: false}}
+            />
+
+            <Stack.Screen name='Register' 
+            component={RegisterScreen}
             options={{headerShown: false}}
             />
         

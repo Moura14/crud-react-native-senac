@@ -2,39 +2,43 @@ import { Component } from 'react';
 import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 
-
-
 const initialState = {
+    name: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
 }
 
 
-export default class Login extends Component{
+export default class Register extends Component {
+
 
 
 
     state = {...initialState}
 
     render(){
-        return (
+        return(
             <ImageBackground source={require('../../assets/images/login.jpg')} style={styles.background}>
-                <Text style={styles.title}>Login</Text>
+                <Text style={styles.title}>Registro</Text>
                 <View style={styles.container}>
                     <Text style={styles.subtitle}>Informe seus dados</Text>
+                    <TextInput style={styles.input} placeholder='Nome'></TextInput>
                     <TextInput style={styles.input} placeholder='E-mail'></TextInput>
                     <TextInput style={styles.input} placeholder='Senha' secureTextEntry={true}></TextInput>
+                    <TextInput style={styles.input} placeholder='Confirme sua senha' secureTextEntry={true}></TextInput>
                 </View>
                  <TouchableOpacity onPress={() => 'fdsafdf'}>
                         
-                            <Text style={styles.buttonText}>{this.state.stateNew ? 'Registrar' : 'Entrar'}</Text>
+                            <Text style={styles.buttonText}>{this.state.stateNew ? 'Registrar' : 'Registrar'}</Text>
                       
                     </TouchableOpacity>
-                <TouchableOpacity style={{padding: 10}} onPress={() => this.props.navigation.navigate('Register')}>
-                    <Text style={{color: '#FFF'}}>Não tem uma conta? Cadastre-se</Text>
+                <TouchableOpacity style={{padding: 10}} onPress={() => this.props.navigation.navigate('Login')}>
+                    <Text style={{color: '#FFF'}}>Já tem uma conta? Entre</Text>
                 </TouchableOpacity>
             </ImageBackground>
         )
+        
     }
 }
 
