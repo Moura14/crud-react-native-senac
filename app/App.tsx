@@ -135,6 +135,7 @@ export default function App() {
             component={RegisterScreen}
             options={{headerShown: false}}
             />
+            
         
           <Stack.Screen
             name="Tabs"
@@ -146,6 +147,16 @@ export default function App() {
             component={UserForms}
             options={{
               title: 'Cadastro de Cliente',
+              headerStyle: { backgroundColor: '#f4511e' },
+              headerTintColor: '#fff',
+              headerTitleStyle: { fontWeight: 'bold' },
+            }}
+          />
+          <Stack.Screen
+            name="ProductList"
+            component={ProductLists}
+            options={{
+              title: 'Lista de Produtos',
               headerStyle: { backgroundColor: '#f4511e' },
               headerTintColor: '#fff',
               headerTitleStyle: { fontWeight: 'bold' },

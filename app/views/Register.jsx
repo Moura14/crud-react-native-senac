@@ -28,9 +28,9 @@ export default class Register extends Component {
                     <TextInput style={styles.input} placeholder='Senha' secureTextEntry={true}></TextInput>
                     <TextInput style={styles.input} placeholder='Confirme sua senha' secureTextEntry={true}></TextInput>
                 </View>
-                 <TouchableOpacity onPress={() => 'fdsafdf'}>
+                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
                         
-                            <Text style={styles.buttonText}>{this.state.stateNew ? 'Registrar' : 'Registrar'}</Text>
+                            <Text style={styles.buttonText}>Registrar</Text>
                       
                     </TouchableOpacity>
                 <TouchableOpacity style={{padding: 10}} onPress={() => this.props.navigation.navigate('Login')}>

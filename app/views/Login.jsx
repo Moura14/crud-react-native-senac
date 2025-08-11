@@ -4,6 +4,8 @@ import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } 
 
 
 
+
+
 const initialState = {
     email: '',
     password: ''
@@ -11,6 +13,7 @@ const initialState = {
 
 
 export default class Login extends Component{
+
 
 
 
@@ -22,10 +25,10 @@ export default class Login extends Component{
                 <Text style={styles.title}>Login</Text>
                 <View style={styles.container}>
                     <Text style={styles.subtitle}>Informe seus dados</Text>
-                    <TextInput style={styles.input} placeholder='E-mail'></TextInput>
-                    <TextInput style={styles.input} placeholder='Senha' secureTextEntry={true}></TextInput>
+                    <TextInput style={styles.input} placeholder='E-mail' value={this.state.email} onChangeText={(email) => this.setState({email})}></TextInput>
+                    <TextInput style={styles.input} placeholder='Senha' value={this.state.password} onChangeText={(password) => this.setState({password})} secureTextEntry={true}></TextInput>
                 </View>
-                 <TouchableOpacity onPress={() => 'fdsafdf'}>
+                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Tabs')}>
                         
                             <Text style={styles.buttonText}>{this.state.stateNew ? 'Registrar' : 'Entrar'}</Text>
                       
