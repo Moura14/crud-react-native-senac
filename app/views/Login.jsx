@@ -1,5 +1,7 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
 import { Button, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
@@ -7,15 +9,28 @@ export default function Login({ navigation }) {
   const [error, setError] = useState('');
   const [user, setUser] = useState(null);
 
-  const handleLogin = () => {
-    setError('');
-    if (email === 'user@example.com' && password === '123456') {
-      setUser({ email });
-      navigation.replace('Tabs');
-    } else {
-      setError('Email ou senha inválidos');
+  const handleLogin = async () => {
+  setError('');
+
+  try {
+    const storedUser = await AsyncStorage.getItem('user');
+
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+
+      if (email === user.email && password === user.password) {
+        setUser({ email });
+        navigation.replace('Tabs');
+        return;
+      }
     }
-  };
+
+    setError('Email ou senha inválidos');
+  } catch (e) {
+    setError('Erro ao buscar usuário');
+  }
+};
+
 
   if (user) {
     return (

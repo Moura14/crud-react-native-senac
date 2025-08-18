@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
 import { Alert, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
@@ -6,28 +7,38 @@ export default function Register({ navigation }) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  
 
-  const handleRegister = () => {
-    setError('');
+  const handleRegister = async () => {
+  setError('');
 
-    if (!email || !password || !confirmPassword) {
-      setError('Preencha todos os campos');
-      return;
-    }
+  if (!email || !password || !confirmPassword) {
+    setError('Preencha todos os campos');
+    return;
+  }
 
-    if (password !== confirmPassword) {
-      setError('As senhas não conferem');
-      return;
-    }
+  if (password !== confirmPassword) {
+    setError('As senhas não conferem');
+    return;
+  }
 
-    // Simular registro válido
+  try {
+
+    const user = { email, password };
+
+    await AsyncStorage.setItem('user', JSON.stringify(user));
+
     Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
       {
         text: 'OK',
         onPress: () => navigation.replace('Login'),
       },
     ]);
-  };
+  } catch (e) {
+    setError('Erro ao salvar usuário');
+  }
+};
+
 
   return (
     <ImageBackground source={require('../../assets/images/login.jpg')} style={styles.background}>
